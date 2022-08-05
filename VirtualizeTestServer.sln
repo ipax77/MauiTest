@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualizeTestServer", "VirtualizeTestServer\VirtualizeTestServer.csproj", "{BE8EC975-DCB6-435E-B722-859E3964A18B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE8EC975-DCB6-435E-B722-859E3964A18B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE8EC975-DCB6-435E-B722-859E3964A18B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE8EC975-DCB6-435E-B722-859E3964A18B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE8EC975-DCB6-435E-B722-859E3964A18B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8BBB2E7E-980A-47B9-AC9A-E2F60974A592}
+	EndGlobalSection
+EndGlobal

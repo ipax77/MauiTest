@@ -1,0 +1,164 @@
+﻿@using Microsoft.AspNetCore.Components.Web.Virtualization
+
+<style>
+    tr {
+        height: 47px;
+    }
+</style>
+
+<div class="my-component">
+    This component is defined in the <strong>RazorClassLibrary1</strong> library.
+</div>
+
+<div style="min-width: 900px;">
+    <table class="table table-hover table-borderless">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Cmdr1</th>
+                <th>Cmdr2</th>
+                <th>Cmdr3</th>
+                <th>Guid</th>
+                <th>Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            @*<Virtualize Context="employee" ItemsProvider="@LoadEmployees">
+                <ItemContent>
+                <tr>
+                <td>@employee.Name</td>
+                <td>@employee.Commander1</td>
+                <td>@employee.Commander2</td>
+                <td>@employee.Commander3</td>
+                <td>@employee.EmployeeGuid</td>
+                <td>@employee.Number</td>
+                </tr>
+                </ItemContent>
+                <Placeholder>
+                <tr>
+                <td colspan="6">Loading ...</td>
+                </tr>
+                </Placeholder>
+                </Virtualize>
+            *@
+            <Virtualize Context="employee" ItemsProvider="@LoadEmployees" ItemSize="47">
+                <ItemContent>
+                    <tr>
+                        <td>@employee.Name</td>
+                        <td>
+                            <img src="@GetCommanderImgString(employee.Commander1)" alt="@employee.Commander1"
+                                height="30" width="30" />
+                        </td>
+                        <td>
+                            <img src="@GetCommanderImgString(employee.Commander2)" alt="@employee.Commander2"
+                                height="30" width="30" />
+                        </td>
+                        <td>
+                            <img src="@GetCommanderImgString(employee.Commander3)" alt="@employee.Commander3"
+                                height="30" width="30" />
+                        </td>
+                        <td>@employee.EmployeeGuid</td>
+                        <td>@employee.Number</td>
+                    </tr>
+                </ItemContent>
+                <Placeholder>
+                    <tr>
+                        <td colspan="6">Loading ...</td>
+                    </tr>
+                </Placeholder>
+
+            </Virtualize>
+        </tbody>
+    </table>
+</div>
+
+@code
+{
+    private Random random = new();
+    private int totalEmployees = 400;
+
+
+
+    private async ValueTask<ItemsProviderResult<Employee>> LoadEmployees(
+    ItemsProviderRequest request)
+    {
+        var numEmployees = Math.Min(request.Count, totalEmployees - request.StartIndex);
+        var employees = await GetEmployeesAsync(request.StartIndex,
+        numEmployees, request.CancellationToken);
+
+        return new ItemsProviderResult<Employee>(employees, totalEmployees);
+    }
+
+    public async Task<ICollection<Employee>> GetEmployeesAsync(int skip, int take, CancellationToken token)
+    {
+        try
+        {
+            await Task.Delay(50, token);
+            return GetRandomEmployees(take);
+        }
+        catch (OperationCanceledException) { }
+        catch (Exception) { }
+
+        return new List<Employee>();
+    }
+
+    private List<Employee> GetRandomEmployees(int count)
+    {
+        var enumValues = Enum.GetValues(typeof(Commander));
+
+        List<Employee> employees = new();
+        for (int i = 0; i < count; i++)
+        {
+            employees.Add(new()
+            {
+                Name = $"RandomEmployee{random.Next(1, 100)}",
+                Commander1 = (Commander)(enumValues.GetValue(random.Next(0, enumValues.Length)) ?? 0),
+                Commander2 = (Commander)(enumValues.GetValue(random.Next(0, enumValues.Length)) ?? 0),
+                Commander3 = (Commander)(enumValues.GetValue(random.Next(0, enumValues.Length)) ?? 0),
+                Number = random.Next(1, 100)
+            });
+        }
+        return employees;
+    }
+
+    public class Employee
+    {
+        public string Name { get; set; } = null!;
+        public Commander Commander1 { get; set; }
+        public Commander Commander2 { get; set; }
+        public Commander Commander3 { get; set; }
+        public Guid EmployeeGuid { get; init; } = Guid.NewGuid();
+        public int Number { get; set; }
+    }
+
+    private string GetCommanderImgString(Commander cmdr)
+    {
+        return $"_content/RazorClassLibrary1/images/btn-unit-hero-{cmdr.ToString().ToLowerInvariant()}.png";
+    }
+
+    public enum Commander
+    {
+        None = 0,
+        Protoss = 1,
+        Terran = 2,
+        Zerg = 3,
+        Abathur = 10,
+        Alarak = 20,
+        Artanis = 30,
+        Dehaka = 40,
+        Fenix = 50,
+        Horner = 60,
+        Karax = 70,
+        Kerrigan = 80,
+        Mengsk = 90,
+        Nova = 100,
+        Raynor = 110,
+        Stetmann = 120,
+        Stukov = 130,
+        Swann = 140,
+        Tychus = 150,
+        Vorazun = 160,
+        Zagara = 170,
+        Zeratul = 180
+    }
+}
