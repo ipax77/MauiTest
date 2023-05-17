@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.33711.374
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maui8Test", "Maui8Test.csproj", "{ACEC23D9-C253-47CC-BF04-EA74E13DB73D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorClassLibrary1", "..\RazorClassLibrary8\RazorClassLibrary1.csproj", "{C3C8FAD7-39E5-474A-8C1C-87AB8A4A62E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorClassLibrary2", "..\RazorClassLibrary2\RazorClassLibrary2.csproj", "{65F986B0-8FC3-45E1-8AD9-BE3A4316EF19}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ACEC23D9-C253-47CC-BF04-EA74E13DB73D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACEC23D9-C253-47CC-BF04-EA74E13DB73D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACEC23D9-C253-47CC-BF04-EA74E13DB73D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{ACEC23D9-C253-47CC-BF04-EA74E13DB73D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACEC23D9-C253-47CC-BF04-EA74E13DB73D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACEC23D9-C253-47CC-BF04-EA74E13DB73D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{C3C8FAD7-39E5-474A-8C1C-87AB8A4A62E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3C8FAD7-39E5-474A-8C1C-87AB8A4A62E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3C8FAD7-39E5-474A-8C1C-87AB8A4A62E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3C8FAD7-39E5-474A-8C1C-87AB8A4A62E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65F986B0-8FC3-45E1-8AD9-BE3A4316EF19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65F986B0-8FC3-45E1-8AD9-BE3A4316EF19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65F986B0-8FC3-45E1-8AD9-BE3A4316EF19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65F986B0-8FC3-45E1-8AD9-BE3A4316EF19}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {07EB9A79-0567-4B7B-B79F-68B9481B6A9D}
+	EndGlobalSection
+EndGlobal

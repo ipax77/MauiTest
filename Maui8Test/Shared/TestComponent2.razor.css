@@ -1,0 +1,207 @@
+﻿﻿.tableFixHead {
+    overflow-y: auto;
+    height: 750px;
+}
+
+.tableFixHead thead th {
+    position: sticky;
+    top: 0;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 8px 16px;
+    white-space: nowrap;
+}
+
+th {
+    background-color: white;
+    z-index: 100;
+}
+
+.tablebackground {
+    position: absolute;
+    z-index: -1;
+    opacity: 0.15;
+}
+
+.tabactive {
+    border-color: #FF0000;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.preload-terran {
+    background-image: url("images/terran-min.png");
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+    background-size: cover;
+}
+
+.preload-protoss {
+    background-image: url("images/protoss-min.png");
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+    background-size: cover;
+}
+
+.preload-zerg {
+    background-image: url("images/zerg-min.png");
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+    background-size: cover;
+}
+
+.preload-abathur {
+    background-image: url("images/abathur-min.png");
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+    background-size: cover;
+}
+
+.preload-alarak {
+    background-image: url("images/alarak-min.png");
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+    background-size: cover;
+}
+
+.preload-artanis {
+    background-image: url("images/artanis-min.png");
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+    background-size: cover;
+}
+
+.preload-dehaka {
+    background-image: url("images/dehaka-min.png");
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+    background-size: cover;
+}
+
+.preload-fenix {
+    background-image: url("images/fenix-min.png");
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+    background-size: cover;
+}
+
+.preload-horner {
+    background-image: url("images/horner-min.png");
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+    background-size: cover;
+}
+
+.preload-karax {
+    background-image: url("images/karax-min.png");
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+    background-size: cover;
+}
+
+.preload-kerrigan {
+    background-image: url("images/kerrigan-min.png");
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+    background-size: cover;
+}
+
+.preload-mengsk {
+    background-image: url("images/mengsk-min.png");
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+    background-size: cover;
+}
+
+.preload-nova {
+    background-image: url("images/nova-min.png");
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+    background-size: cover;
+}
+
+.preload-raynor {
+    background-image: url("images/raynor-min.png");
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+    background-size: cover;
+}
+
+.preload-stetmann {
+    background-image: url("images/stetmann-min.png");
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+    background-size: cover;
+}
+
+.preload-stukov {
+    background-image: url("images/stukov-min.png");
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+    background-size: cover;
+}
+
+.preload-swann {
+    background-image: url("images/swann-min.png");
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+    background-size: cover;
+}
+
+.preload-tychus {
+    background-image: url("images/tychus-min.png");
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+    background-size: cover;
+}
+
+.preload-vorazun {
+    background-image: url("images/vorazun-min.png");
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+    background-size: cover;
+}
+
+.preload-zagara {
+    background-image: url("images/zagara-min.png");
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+    background-size: cover;
+}
+
+.preload-zeratul {
+    background-image: url("images/zeratul-min.png");
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+    background-size: cover;
+}

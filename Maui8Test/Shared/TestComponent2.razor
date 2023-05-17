@@ -1,0 +1,168 @@
+﻿@using Microsoft.AspNetCore.Components.Web.Virtualization
+
+<HeadContent>
+    <style>
+        html, body {
+            overflow-y: scroll
+        }
+    </style>
+</HeadContent>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <div class="nav-link pointer fw-bold @(preLoad ? "" : "tabactive")" @onclick="e => preLoad = false">Standard images</div>
+    </li>
+    <li class="nav-item">
+        <div class="nav-link pointer fw-bold @(!preLoad ? "" : "tabactive")" @onclick="e => preLoad = true">Preload images</div>
+    </li>
+</ul>
+
+<div class="tableFixHead table-responsive">
+    <table class="table table-hover table-borderless">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Cmdr1</th>
+                <th>Cmdr2</th>
+                <th>Cmdr3</th>
+                <th>Guid</th>
+                <th>Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            <Virtualize Context="employee" ItemsProvider="@LoadEmployees" ItemSize="47" SpacerElement="tr">
+                <ItemContent>
+                    <tr @key="employee" style="height: 47px;" id="row-@employee">
+                        <td>@employee.Name</td>
+                        @if (preLoad)
+                        {
+                            <td>
+                                <div class="preload-@(employee.Commander1.ToString().ToLower())" title="@employee.Commander1" style="width: 30px; height: 30px;"></div>
+                            </td>
+                            <td>
+                                <div class="preload-@(employee.Commander2.ToString().ToLower())" title="@employee.Commander2" style="width: 30px; height: 30px;"></div>
+                            </td>
+                            <td>
+                                <div class="preload-@(employee.Commander3.ToString().ToLower())" title="@employee.Commander3" style="width: 30px; height: 30px;"></div>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                <img src="@GetCommanderImgString(employee.Commander1)" alt="@employee.Commander1"
+                                     height="30" width="30" />
+                            </td>
+                            <td>
+                                <img src="@GetCommanderImgString(employee.Commander2)" alt="@employee.Commander2"
+                                     height="30" width="30" />
+                            </td>
+                            <td>
+                                <img src="@GetCommanderImgString(employee.Commander3)" alt="@employee.Commander3"
+                                     height="30" width="30" />
+                            </td>
+                        }
+                        <td>@employee.EmployeeGuid</td>
+                        <td>@employee.Number</td>
+                    </tr>
+                </ItemContent>
+                <Placeholder>
+                    <tr style ="height: 47px;">
+                        <td colspan="6">Loading ...</td>
+                    </tr>
+                </Placeholder>
+
+            </Virtualize>
+        </tbody>
+    </table>
+</div>
+
+@code
+{
+    private Random random = new();
+    private int totalEmployees = 400;
+
+    private bool preLoad;
+
+    private async ValueTask<ItemsProviderResult<Employee>> LoadEmployees(
+    ItemsProviderRequest request)
+    {
+        var numEmployees = Math.Min(request.Count, totalEmployees - request.StartIndex);
+        var employees = await GetEmployeesAsync(request.StartIndex,
+        numEmployees, request.CancellationToken);
+
+        return new ItemsProviderResult<Employee>(employees, totalEmployees);
+    }
+
+    public async Task<ICollection<Employee>> GetEmployeesAsync(int skip, int take, CancellationToken token)
+    {
+        try
+        {
+            await Task.Delay(50, token);
+            return GetRandomEmployees(take);
+        }
+        catch (OperationCanceledException) { }
+        catch (Exception) { }
+
+        return new List<Employee>();
+    }
+
+    private List<Employee> GetRandomEmployees(int count)
+    {
+        var enumValues = Enum.GetValues(typeof(Commander));
+
+        List<Employee> employees = new();
+        for (int i = 0; i < count; i++)
+        {
+            employees.Add(new()
+                {
+                    Name = $"RandomEmployee{random.Next(1, 100)}",
+                    Commander1 = (Commander)(enumValues.GetValue(random.Next(0, enumValues.Length)) ?? 0),
+                    Commander2 = (Commander)(enumValues.GetValue(random.Next(0, enumValues.Length)) ?? 0),
+                    Commander3 = (Commander)(enumValues.GetValue(random.Next(0, enumValues.Length)) ?? 0),
+                    Number = random.Next(1, 100)
+                });
+        }
+        return employees;
+    }
+
+    public class Employee
+    {
+        public string Name { get; set; } = null!;
+        public Commander Commander1 { get; set; }
+        public Commander Commander2 { get; set; }
+        public Commander Commander3 { get; set; }
+        public Guid EmployeeGuid { get; init; } = Guid.NewGuid();
+        public int Number { get; set; }
+    }
+
+    private string GetCommanderImgString(Commander cmdr)
+    {
+        return $"images/{cmdr.ToString().ToLowerInvariant()}-min.png";
+    }
+
+    public enum Commander
+    {
+        None = 0,
+        Protoss = 1,
+        Terran = 2,
+        Zerg = 3,
+        Abathur = 10,
+        Alarak = 20,
+        Artanis = 30,
+        Dehaka = 40,
+        Fenix = 50,
+        Horner = 60,
+        Karax = 70,
+        Kerrigan = 80,
+        Mengsk = 90,
+        Nova = 100,
+        Raynor = 110,
+        Stetmann = 120,
+        Stukov = 130,
+        Swann = 140,
+        Tychus = 150,
+        Vorazun = 160,
+        Zagara = 170,
+        Zeratul = 180
+    }
+}
